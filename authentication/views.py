@@ -4,7 +4,6 @@ from .crud.user.create import create_user
 from rest_framework import status
 from .utils.jwt_authentication.verify import verify
 from .functions.authentication.login_user import login_user
-import re
 
 @api_view(["POST"])
 def RegisterUser(request):
@@ -12,8 +11,11 @@ def RegisterUser(request):
     tag = request.data["tag"]
     email = request.data["email"]
     password = request.data["password"]
-    response = create_user(username=username, tag=tag, email=email, password=password)
-    return Response("User is created successfully!", status=status.HTTP_201_CREATED) if response else Response("Something went wrong!", status=status.HTTP_400_BAD_REQUEST)
+    ip_address = request.data["ip_address"]
+    location = request.data["location"]
+    isp = request.data["isp"]
+    response = create_user(username=username, tag=tag, email=email, password=password, ip_address=ip_address, location=location, isp=isp)
+    return response
 
 @api_view(["POST"])
 def LoginUser(request):

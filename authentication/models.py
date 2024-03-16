@@ -5,7 +5,7 @@ class UserModel(models.Model):
     username = models.CharField(max_length=64)
     tag = models.CharField(max_length=4)
     email = models.EmailField(unique=True)
-    password = models.TextField(unique=True)
+    password = models.TextField()
     ip_address = models.CharField()
     location = models.CharField()
     isp = models.CharField()
