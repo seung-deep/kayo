@@ -4,6 +4,7 @@ from .crud.user.create import create_user
 from rest_framework import status
 from .utils.jwt_authentication.verify import verify
 from .functions.authentication.login_user import login_user
+import re
 
 @api_view(["POST"])
 def RegisterUser(request):
